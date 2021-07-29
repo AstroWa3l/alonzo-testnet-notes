@@ -102,7 +102,6 @@ Copy and paste the startup script
 
 ```bash	
 #!/bin/bash
-#!/bin/bash
 cardano-node run \
  --topology /home/ubuntu/alonzo-testnet/files/alonzo-white-topology.json \
  --database-path /home/ubuntu/alonzo-testnet/db \
