@@ -113,8 +113,17 @@ cardano-node run \
  ```bash
  sudo chmod +x alonzo-testnet/scripts/cardano-node.sh
  ```
+8. run the cardano-node script
+```bash
+~/alonzo-testnet/scripts/cardano-node.sh
+```
 
- 8. Download and install gLiveView for monitoring the node.
+```bash
+echo export CARDANO_NODE_SOCKET_PATH=~/alonzo-testnet/node.socket >> .bashrc
+source .bashrc
+```
+
+9. Download and install gLiveView for monitoring the node.
  ```bash
  curl -s -o gLiveView.sh https://raw.githubusercontent.com/cardano-community/guild-operators/master/scripts/cnode-helper-scripts/gLiveView.sh
  ```
@@ -123,4 +132,23 @@ cardano-node run \
  curl -s -o env https://raw.githubusercontent.com/cardano-community/guild-operators/master/scripts/cnode-helper-scripts/env
 chmod 755 gLiveView.sh
  ```
- 
+
+
+10. Set your port number in env file to `PORT_NUMBER=6001`, Run the gLiveView script to monitor the node.
+
+```bash
+cd alonzo-testnet/files
+sudo nano env
+```
+```bash
+./gLiveView.sh
+```
+- Now just wait for the node to start up and you will see the node status in the gLiveView.
+
+11. Query the tip of the blockchain after the node has fully synced.
+
+```bash
+cardano-cli query tip --testnet-magic 7
+```
+
+
