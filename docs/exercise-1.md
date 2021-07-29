@@ -147,7 +147,75 @@ sudo nano env
 11. Query the tip of the blockchain after the node has fully synced.
 
 ```bash
+cd
 cardano-cli query tip --testnet-magic 7
 ```
+Output should look similar to the following:
+```bash
+{
+    "epoch": 268,
+    "hash": "3a1166c73b9233f8caf9a8b4debd52c73d57ae1399b245b95c9d911b155fbf40",
+    "slot": 1928744,
+    "block": 94632,
+    "era": "Alonzo",
+    "syncProgress": "100.00"
+}
+```
 
+12. Create a wallet and request test ada from the faucet on the IOHK discord server.
 
+```bash
+cd alonzo-testnet/files
+
+cardano-cli address key-gen \
+--verification-key-file payment.vkey \
+--signing-key-file payment.skey
+```
+```bash
+cardano-cli stake-address key-gen \
+--verification-key-file stake.vkey \
+--signing-key-file stake.skey
+```
+```bash
+cardano-cli address build \
+--payment-verification-key-file payment.vkey \
+--stake-verification-key-file stake.vkey \
+--out-file payment.addr \
+--testnet-magic 7
+```
+View the public wallet address in the command line terminal
+
+```bash
+cat payment.addr
+```
+`addr_test1qqeg5nywcwuzuay4fdlv86ac7rd5e3f3f7k07htt2fu4zpwsc5zjxcqdvy4ngjtpxx99yv3chu2jlfr6rycyza27e79s88f52x`
+
+Create stake address
+
+```bash
+cardano-cli stake-address build \
+--stake-verification-key-file stake.vkey \
+--out-file stake.addr \
+--testnet-magic 7
+```
+```bash
+cat stake.addr
+```
+`stake_test1uptk5jplp625a0vlvzkul8lklypyhdmsq7xktzzxtgv4ydsk4g6es`
+
+Make a public payment address variable and the API key variable (get API key from IOHK discord server)
+```bash
+export ADDRESS=addr_test1qqeg5nywcwuzuay4fdlv86ac7rd5e3f3f7k07htt2fu4zpwsc5zjxcqdvy4ngjtpxx99yv3chu2jlfr6rycyza27e79s88f52x
+export API_KEY=<API_KEY>
+```
+```bash
+curl -v -XPOST "https://faucet.alonzo-white.dev.cardano.org/send-money/$ADDRESS?apiKey=$API_KEY"
+```
+
+Check the transaction status by checking your wallet balance
+```bash
+cardano-cli query utxo --testnet-magic 7 --address $ADDRESS
+```
+![wallet balance](https://github.com/AstroWa3l/alonzo-testnet-notes/blob/main/Screen%20Shot%202021-07-28%20at%208.40.22%20PM.png?raw=true)
+
+And that's it for exercise 1 🏁
