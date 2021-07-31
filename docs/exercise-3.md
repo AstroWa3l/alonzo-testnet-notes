@@ -50,7 +50,6 @@ cardano-cli transaction build-raw \
 cardano-cli transaction sign \
 --testnet-magic 7 \
 --signing-key-file payment.skey \
---signing-key-file \
 --tx-body-file tx.raw \
 --out-file tx.sign
 ```
