@@ -35,10 +35,10 @@ cardano-cli query utxo --testnet-magic 7 --address $(cat payment.addr)
 
 ```bash
 cardano-cli transaction build-raw \
---mary-era \
+--alonzo-era \
 --fee 200000 \
 --tx-in f3106e23dc9f794e6a6162e26f5aa9a107dad6fffd0204f534e792c95bf2048f#1 \
---tx-out addr_test1qqtc6l8g0kt2hvtd6xsesamrxe5pknacr5xw5e023x0c2k5u8clq4clmksmxvtwp388876g5skfyzzyjhtwyvylt3lzq3dxkr4+25000000000 \
+--tx-out $(cat payment2.addr)+25000000000 \
 --tx-out $(cat payment.addr)+74999800000 \
 --protocol-params-file ~/alonzo-testnet/files/pparams.json \
 --out-file tx.raw
@@ -50,6 +50,7 @@ cardano-cli transaction build-raw \
 cardano-cli transaction sign \
 --testnet-magic 7 \
 --signing-key-file payment.skey \
+--signing-key-file \
 --tx-body-file tx.raw \
 --out-file tx.sign
 ```
