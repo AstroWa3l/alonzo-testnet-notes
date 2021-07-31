@@ -21,10 +21,13 @@ cardano-cli address build \
 ```bash
 cardano-cli query utxo --testnet-magic 7 --address $(cat payment.addr)
 ```
+
+```
                          TxHash                                 TxIx        Amount
 --------------------------------------------------------------------------------------
 55ba9e9542b8962a6689f69242158d665bde7e610e4e5af9ebe9e080ad2024a2     1        10000000 lovelace + TxOutDatumHashNone
 7b4956b103d47908318ee92aa0790ff4b36fe7940991f0be350c9085fc4da175     1        100000000000 lovelace + TxOutDatumHashNone
+```
 
 ### Send tokens between the funded wallet and the new address
 
