@@ -139,7 +139,6 @@ fedbfc79d12d27c891dca82ab3110cf3077e6536b9049949ffdef199698971cf     0        10
 ```bash
 COLLATERAL=3064e641ab188863eb3ec7755d1c06ba4c95b3db5575a87998c95c7c8053430a#1
 ADDR3=ADDR3=fedbfc79d12d27c891dca82ab3110cf3077e6536b9049949ffdef199698971cf#0
-MAGIC=8
 ```
 ```bash
  cardano-cli transaction build \
@@ -151,8 +150,8 @@ MAGIC=8
  --tx-in-collateral ${COLLATERAL} \
  --change-address $(cat payment2.addr) \
  --protocol-params-file pparams.json \
- --testnet-magic ${MAGIC} \
+ --testnet-magic 8 \
  --out-file tx.raw
  ```
-cardano-cli transaction sign --tx-body-file tx.raw --signing-key-file collateral_payment.skey --testnet-magic ${MAGIC} --out-file tx.sign
-cardano-cli transaction submit --testnet-magic ${MAGIC} --tx-file tx.sign
+cardano-cli transaction sign --tx-body-file tx.raw --signing-key-file collateral_payment.skey --testnet-magic 8 --out-file tx.sign
+cardano-cli transaction submit --testnet-magic 8 --tx-file tx.sign
