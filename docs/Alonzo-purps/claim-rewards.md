@@ -89,3 +89,5 @@ cardano-cli query utxo --testnet-magic 8 --address $(cat payment.addr)
 a84a0f59b494a83bdeee7aad7a77a0a75172a85352944d453f5bc8d20d06562f     0        111578710713 lovelace + TxOutDatumHashNone
 a84a0f59b494a83bdeee7aad7a77a0a75172a85352944d453f5bc8d20d06562f     1        1888421117098 lovelace + TxOutDatumHashNone
 ```
+
+## 🤡 haha this is not what I was expecting...
