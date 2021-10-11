@@ -139,8 +139,6 @@ cardano-cli stake-pool registration-certificate \
 
 curl -v -XPOST "https://faucet.alonzo-purple.dev.cardano.org/send-money/$ADDRESS?apiKey=$KEY"
 
-jv3NBtZeaL0lZUxgqq8slTttX3BzViI7
-
 # create delegation cert for pledge
 cardano-cli stake-address delegation-certificate --stake-verification-key-file stake.vkey --cold-verification-key-file cold.vkey --out-file delegation.cert
 
